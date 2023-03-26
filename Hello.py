@@ -3,8 +3,10 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/")
-async def root():
-    return {"message": "Hello World!"}
+def root():
+    return {"message": "Welcome to my API!!!"}
 
-## Resume 39.24
-## https://www.youtube.com/watch?v=0sOvCWFmrtA&t=730s
+@app.get("/posts")
+def get_posts():
+    return {"data": "This is a post"}
+## start server with uvicorn Hello:app --reload
