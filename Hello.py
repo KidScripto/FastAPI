@@ -1,4 +1,5 @@
-from fastapi import FastAPI 
+from fastapi import FastAPI
+from fastapi.params import Body 
 
 app = FastAPI()
 
@@ -10,3 +11,8 @@ def root():
 def get_posts():
     return {"data": "This is a post"}
 ## start server with uvicorn Hello:app --reload
+
+@app.post("/createposts")
+def create_post(payLoad: dict = Body(...)):
+    print(payLoad)
+    return {"new_post": f"title {payLoad['title']} content: {payLoad['content']}"}
